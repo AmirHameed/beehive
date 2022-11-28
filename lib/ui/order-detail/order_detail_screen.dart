@@ -3,10 +3,10 @@ import 'package:beehive/ui/chat_screen.dart';
 import 'package:beehive/ui/common/app_button.dart';
 import 'package:beehive/ui/common/app_text_field.dart';
 import 'package:beehive/ui/common/title_with_price_item.dart';
-import 'package:beehive/ui/my_address_screen.dart';
+import 'package:beehive/ui/my-address/my_address_screen.dart';
 import 'package:beehive/ui/order-detail/order_detail_screen_bloc.dart';
 import 'package:beehive/ui/order-detail/order_detail_screen_bloc_state.dart';
-import 'package:beehive/ui/payment_method_screen.dart';
+import 'package:beehive/ui/payment-method/payment_method_screen.dart';
 import 'package:beehive/utils/app_strings.dart';
 import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -97,7 +97,11 @@ class OrderDetailScreen extends StatelessWidget {
                                           color: Constants.colorPrimary,
                                           fontFamily: Constants.cairoSemibold)),
                                 )
-                              : const SizedBox(),
+                              : const Text(' Hamadan restaurant',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Constants.colorPrimary,
+                                  fontFamily: Constants.cairoSemibold)),
                           const Spacer(),
                           const Icon(Icons.arrow_forward_ios_rounded,
                               color: Constants.colorTextLight, size: 18)
@@ -244,6 +248,7 @@ class OrderDetailScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
+                  if(bloc.isOrderDetail==false)return;
                   final result = await Navigator.pushNamed(
                       context, MyAddressScreen.route,
                       arguments: true);
@@ -252,7 +257,7 @@ class OrderDetailScreen extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.only(left: 20,right: 20,top: 10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
@@ -325,10 +330,10 @@ class OrderDetailScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  final result = await Navigator.pushNamed(
-                      context, PaymentMethodScreen.route);
-                  if (result == true) {
-                    bloc.updatePaymentMethod(true);
+                  if(bloc.isOrderDetail==false)return;
+                  final result = await Navigator.pushNamed(context, PaymentMethodScreen.route,arguments: true);
+                  if (result != -1) {
+                    bloc.updatePaymentMethod(true,result as int);
                   }
                 },
                 child: Container(
@@ -359,9 +364,10 @@ class OrderDetailScreen extends StatelessWidget {
                       BlocBuilder<OrderDetailScreenBloc,
                           OrderDetailScreenBlocState>(
                         buildWhen: (previous, current) =>
-                            previous.isPaymentMethod != current.isPaymentMethod,
-                        builder: (_, state) => state.isPaymentMethod
+                            previous.isPaymentMethod != current.isPaymentMethod || previous.paymentMethodSelected!=current.paymentMethodSelected,
+                        builder: (_, state) => state.isPaymentMethod || state.paymentMethodSelected!=-1
                             ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Divider(
                                     thickness: 1,
@@ -371,7 +377,14 @@ class OrderDetailScreen extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 5, horizontal: 10),
-                                    child: Row(
+                                    child:state.paymentMethodSelected==3?
+                                    const Text(AppText.WALLET,
+                                        textAlign: TextAlign.end,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color:Constants.colorOnSecondary,
+                                            fontFamily: Constants.cairoSemibold)):
+                                    Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
@@ -400,7 +413,7 @@ class OrderDetailScreen extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: [
-                                            Image.asset('assets/visa.png',
+                                            Image.asset(state.paymentMethodSelected==0?'assets/visa.png':state.paymentMethodSelected==1?'assets/master.png':'assets/1200px-Mada_Logo 2.png',
                                                 width: 70, height: 40),
                                             const SizedBox(height: 10),
                                             const Text('Expired',
@@ -564,6 +577,8 @@ class OrderDetailScreen extends StatelessWidget {
                               title: 'Order', value: '1.90'),
                           const TitleWithPriceItem(
                               title: 'Fees', value: '1.90'),
+                          const TitleWithPriceItem(
+                              title: 'Delivery', value: '1.90'),
                           const TitleWithPriceItem(
                               title: 'All',
                               value: '21.80',

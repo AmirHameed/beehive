@@ -13,11 +13,11 @@ class NotificationNavigationItemScreen extends StatelessWidget {
     final size = context.screenSize;
 
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      const SizedBox(height: 20),
-      const Text(AppText.NOTIFICATION,
+      const SizedBox(height: 10),
+      const Text(AppText.NOTIFICATIONS,
           style: TextStyle(
               color: Constants.colorOnSecondary,
-              fontSize: 22,
+              fontSize: 16,
               fontFamily: Constants.cairoBold)),
       const Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
@@ -31,22 +31,26 @@ class NotificationNavigationItemScreen extends StatelessWidget {
         child: ListView.separated(
           itemCount: 6,
           physics: const BouncingScrollPhysics(),
-          separatorBuilder: (_, __) => const Divider(thickness: 1,height: 1,color: Constants.colorTextLight2),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          separatorBuilder: (_, __) => const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(thickness: 1,height: 1,color: Constants.colorTextLight2),
+          ),
+          padding: const EdgeInsets.all(0),
           scrollDirection: Axis.vertical,
           itemBuilder: (_, index) => Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: Constants.colorOnSurface,
             ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                  Container(
-                  height: 40,
-                  width: 40,
+                  height: 35,
+                  width: 35,
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -58,22 +62,21 @@ class NotificationNavigationItemScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
                       children: const [
-                        Text('Lerom ipsumLerom Lerom ipsumLerom Lerom ipsumLerom',
+                        Text('Lerom ipsumLerom Lerom ipsumLerom',
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontFamily: Constants.cairoRegular,
                                 color: Constants.colorOnSecondary)),
-                        SizedBox(height: 10),
                         Text('10 min',
                             style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: Constants.cairoRegular,
+                                fontSize: 12,
+                                fontFamily: Constants.cairoLight,
                                 color: Constants.colorTextLight)),
                       ],
                     ),

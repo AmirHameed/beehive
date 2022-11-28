@@ -9,6 +9,8 @@ import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../helper/dialog_helper.dart';
+
 class ProviderOfferScreen extends StatelessWidget {
   static const String route = 'providers_offers_screen_route';
   const ProviderOfferScreen({Key? key})
@@ -17,6 +19,7 @@ class ProviderOfferScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = context.screenSize;
+    final dialogHelper = DialogHelper.instance();
 
     return Scaffold(
       body: WillPopScope(
@@ -25,9 +28,8 @@ class ProviderOfferScreen extends StatelessWidget {
         },
         child: SafeArea(
           child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -44,8 +46,12 @@ class ProviderOfferScreen extends StatelessWidget {
                           fontSize: 16,
                           fontFamily: Constants.cairoBold)),
                   GestureDetector(
-                    onTap: () {},
-                    child: const Text(AppText.CANCEL_ORDER,
+                    onTap: () {
+                      dialogHelper
+                        ..injectContext(context)
+                                ..showDeleteDialog();
+                    },
+                    child: const Text(AppText.CANCEL_THE_ORDER,
                         style: TextStyle(
                             color: Constants.colorError,
                             fontSize: 12,
@@ -54,13 +60,10 @@ class ProviderOfferScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Divider(
-                thickness: 1,
-                color: Constants.colorTextLight2,
-                height: 1,
-              ),
+            const Divider(
+              thickness: 1,
+              color: Constants.colorTextLight2,
+              height: 1,
             ),
             Container(
               margin: const EdgeInsets.symmetric(
@@ -88,7 +91,7 @@ class ProviderOfferScreen extends StatelessWidget {
                         const Spacer(),
                         GestureDetector(
                           onTap: ()=>Navigator.pushNamed(context, ReviewsScreen.route),
-                          child: const Text('4.5',
+                          child: const Text('4.5 ',
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Constants.colorOnSecondary,
@@ -106,7 +109,7 @@ class ProviderOfferScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 5, horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
@@ -115,7 +118,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('5 km',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -126,8 +129,7 @@ class ProviderOfferScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
@@ -136,7 +138,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('1 hour',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -148,7 +150,7 @@ class ProviderOfferScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 5, horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children:  const [
@@ -157,7 +159,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('20 SR',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -180,6 +182,10 @@ class ProviderOfferScreen extends StatelessWidget {
                             textColor: Constants.colorOnSurface,
                             borderRadius: 8.0,
                             fontSize: 16,
+                            fontStyle: const TextStyle(
+                                color: Constants.colorOnSurface,
+                                fontSize: 14,
+                                fontFamily: Constants.cairoMedium),
                             color:  Constants.colorPrimary)),
                   )
                 ],
@@ -211,7 +217,7 @@ class ProviderOfferScreen extends StatelessWidget {
                         const Spacer(),
                         GestureDetector(
                           onTap: ()=>Navigator.pushNamed(context, ReviewsScreen.route),
-                          child: const Text('4.5',
+                          child: const Text('4.5 ',
                               style: TextStyle(
                                   fontSize: 14,
                                   color: Constants.colorOnSecondary,
@@ -229,7 +235,7 @@ class ProviderOfferScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 5, horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
@@ -238,7 +244,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('5 km',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -249,8 +255,7 @@ class ProviderOfferScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
@@ -259,7 +264,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('1 hour',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -271,7 +276,7 @@ class ProviderOfferScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 5, horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children:  const [
@@ -280,7 +285,7 @@ class ProviderOfferScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoRegular)),
+                                fontFamily: Constants.cairoSemibold)),
                         Text('20 SR',
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -302,6 +307,10 @@ class ProviderOfferScreen extends StatelessWidget {
                             text: AppText.CHOOSE_THE_OFFER,
                             textColor: Constants.colorOnSurface,
                             borderRadius: 8.0,
+                            fontStyle: const TextStyle(
+                                color: Constants.colorOnSurface,
+                                fontSize: 14,
+                                fontFamily: Constants.cairoMedium),
                             fontSize: 16,
                             color:  Constants.colorPrimary)),
                   )

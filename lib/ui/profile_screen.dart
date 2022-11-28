@@ -1,8 +1,8 @@
 import 'package:beehive/extension/context_extension.dart';
-import 'package:beehive/ui/my_address_screen.dart';
+import 'package:beehive/ui/my-address/my_address_screen.dart';
 import 'package:beehive/ui/my_information_screen.dart';
 import 'package:beehive/ui/order/order_screen.dart';
-import 'package:beehive/ui/payment_method_screen.dart';
+import 'package:beehive/ui/payment-method/payment_method_screen.dart';
 import 'package:beehive/ui/setting/setting_screen.dart';
 import 'package:beehive/utils/app_strings.dart';
 import 'package:beehive/utils/constants.dart';
@@ -71,7 +71,7 @@ class ProfileScreen extends StatelessWidget {
               title: AppText.PAYMENT_METHODS,
               image: 'assets/card-pos@2x.png',
               onTap: () {
-                Navigator.pushNamed(context, PaymentMethodScreen.route);
+                Navigator.pushNamed(context, PaymentMethodScreen.route,arguments: false);
               }),
           _SingleProfileItemNavigation(
               title: AppText.SETTINGS, image: 'assets/setting-2@2x.png', onTap: () {

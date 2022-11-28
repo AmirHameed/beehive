@@ -1,12 +1,13 @@
+import 'package:beehive/custom_icon_icons.dart';
 import 'package:beehive/extension/context_extension.dart';
 import 'package:beehive/helper/dialog_helper.dart';
-import 'package:beehive/ui/choose_delivery_address_screen.dart';
 import 'package:beehive/ui/common/app_button.dart';
+import 'package:beehive/ui/payment-method/payment_method_screen_bloc.dart';
 import 'package:beehive/utils/app_strings.dart';
 import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:image_picker/image_picker.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
   static const String route = 'payment_method_screen_route';
@@ -15,27 +16,24 @@ class PaymentMethodScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
     final dialogHelper = DialogHelper.instance();
+    final size = context.screenSize;
 
+    final bloc=context.read<PaymentMethodScreenBloc>();
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: () async {
-          Navigator.pop(context, true);
-          return false;
-        },
-        child: SafeArea(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const SizedBox(height: 10),
+      body: SafeArea(
+        child: BlocBuilder<PaymentMethodScreenBloc,int>(
+          builder: (_,state)=>
+          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                      onTap: () => Navigator.pop(context,true),
+                      onTap: () => Navigator.pop(context,-1),
                       child: const Icon(
-                        Icons.clear,
+                        Icons.arrow_back_ios,
                         size: 22,
                         color: Constants.colorOnSecondary,
                       )),
@@ -57,186 +55,132 @@ class PaymentMethodScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Divider(
-                thickness: 1,
-                color: Constants.colorTextLight2,
-                height: 1,
-              ),
+            const Divider(
+              thickness: 1,
+              color: Constants.colorTextLight2,
+              height: 1,
             ),
-            // const SizedBox(height: 20),
-            // Container(
-            //   width: size.width,
-            //   margin: const EdgeInsets.symmetric(horizontal: 20),
-            //   padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            //   decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(12),
-            //       border: Border.all(width: 1, color: Constants.colorTextLight3)),
-            //   child: const Text(AppText.CASH_ON_DELIVERY,
-            //       textAlign: TextAlign.end,
-            //       style: TextStyle(
-            //           fontSize: 14,
-            //           color: Constants.colorOnSecondary,
-            //           fontWeight: FontWeight.w600)),
-            // ),
             const SizedBox(height: 10),
-            Slidable(
-              endActionPane:
-                ActionPane(
-                    extentRatio: 0.3,
-                    motion: const ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                          onPressed: (_){
-
-                            dialogHelper
-                              ..injectContext(context)
-                              ..showDeleteDialogCart();
-                          },
-                          backgroundColor: Colors.transparent,
-                          icon: Icons.delete,
-                          label: '',
-                          padding: const EdgeInsets.only(top: 10),
-                          foregroundColor: Colors.red,
-                          spacing: 0)
-                    ]),
+            GestureDetector(
+              onTap: (){
+                bloc.updateIndex(3);
+              },
               child: Container(
+                width: double.infinity,
+                alignment: Alignment.centerLeft,
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(width: 1, color: Constants.colorTextLight3)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('**** **** **** 6544',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoSemibold)),
-                        SizedBox(height: 20),
-                        Text('12/23',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoSemibold))
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                    border: Border.all(width: 1, color:state==3?Constants.colorPrimary:  Constants.colorTextLight3)),
+                child:  const Text(AppText.WALLET,
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                        fontSize: 14,
+                        color:Constants.colorOnSecondary,
+                        fontFamily: Constants.cairoSemibold)),
+              ),
+            ),
+            const SizedBox(height: 10),
+
+
+
+            ListView.separated(
+              separatorBuilder: (_,__)=>const SizedBox(height: 10),
+              shrinkWrap: true,
+              itemCount: 3,
+              itemBuilder: (_,index)=>
+              Slidable(
+                endActionPane:
+                  ActionPane(
+                      extentRatio: 0.3,
+                      motion: const ScrollMotion(),
                       children: [
-                        Image.asset('assets/visa.png', width: 70, height: 40),
-                        const SizedBox(height: 10),
-                        const Text('Expired',
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Constants.colorOnSecondary,
-                                fontFamily: Constants.cairoSemibold))
+                        SlidableAction(
+                            onPressed: (_){
+                              dialogHelper
+                                ..injectContext(context)
+                                ..showDeleteDialogCart();
+                            },
+                            backgroundColor: Colors.transparent,
+                            icon: CustomIcon.frame,
+                            label: '',
+                            padding: const EdgeInsets.only(top: 10),
+                            foregroundColor: Colors.red,
+                            spacing: 0)
+                      ]),
+                child: GestureDetector(
+                  onTap: ()=>bloc.updateIndex(index),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(width: 1, color:state==index?Constants.colorPrimary: Constants.colorTextLight3)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text('**** **** **** 6544',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Constants.colorOnSecondary,
+                                    fontFamily: Constants.cairoSemibold)),
+                            SizedBox(height: 20),
+                            Text('12/23',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Constants.colorOnSecondary,
+                                    fontFamily: Constants.cairoSemibold))
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Image.asset(index==0?'assets/visa.png':index==1?'assets/master.png':'assets/1200px-Mada_Logo 2.png', width: 70, height: 40),
+                            const SizedBox(height: 10),
+                            const Text('Expired',
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Constants.colorOnSecondary,
+                                    fontFamily: Constants.cairoSemibold))
+                          ],
+                        ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-
-            const SizedBox(height: 10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(width: 1, color: Constants.colorPrimary)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('**** **** **** 6544',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold)),
-                      SizedBox(height: 20),
-                      Text('12/23',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold))
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset('assets/master.png', width: 70, height: 40),
-                      const SizedBox(height: 10),
-                      const Text('Expired',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold))
-                    ],
-                  ),
-                ],
+            bloc.isShippingAddress?
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
+              child: SizedBox(
+                height: 48,
+                width: size.width,
+                child: AppButton(
+                    onClick: () {
+                      if (state==-1 || !bloc.isShippingAddress) return;
+                      Navigator.pop(context,state);
+                    },
+                    text: AppText.CHOOSE,
+                    textColor: state!=-1? Constants.colorOnSurface:Constants.colorOnPrimary.withOpacity(0.7),
+                    borderRadius: 8.0,
+                    fontSize: 14,
+                    fontStyle: TextStyle(
+                      fontFamily: Constants.cairoMedium,
+                      fontSize: 14,
+                      color:state!=-1? Constants.colorOnSurface:Constants.colorOnPrimary.withOpacity(0.7),
+                    ),
+                    color: state!=-1? Constants.colorPrimary
+                        : Constants.colorPrimaryLight),
               ),
-            ),
-
-            const SizedBox(height: 10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(width: 1, color: Constants.colorTextLight3)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('**** **** **** 6544',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold)),
-                      SizedBox(height: 20),
-                      Text('12/23',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold))
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset('assets/1200px-Mada_Logo 2.png', width: 70, height: 40),
-                      const SizedBox(height: 10),
-                      const Text('Expired',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Constants.colorOnSecondary,
-                              fontFamily: Constants.cairoSemibold))
-                    ],
-                  ),
-                ],
-              ),
-            )
-
-
+            ):const SizedBox()
           ]),
         ),
       ),

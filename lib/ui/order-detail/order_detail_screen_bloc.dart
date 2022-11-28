@@ -14,7 +14,7 @@ class OrderDetailScreenBloc extends Cubit<OrderDetailScreenBlocState> {
     emit(state.copyWith(isDeliveryAddress: value));
   }
 
-  void updatePaymentMethod(bool value) {
-    emit(state.copyWith(isPaymentMethod: value));
+  void updatePaymentMethod(bool value,int selectedValue) {
+    emit(state.copyWith(isPaymentMethod: value,paymentMethodSelected: selectedValue));
   }
 }

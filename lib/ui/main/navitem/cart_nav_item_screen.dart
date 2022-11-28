@@ -6,6 +6,7 @@ import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../../custom_icon_icons.dart';
 import '../../../helper/dialog_helper.dart';
 import '../../common/app_button.dart';
 
@@ -40,7 +41,7 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
 
   Widget cardScreen(context, size,dialogHelper) {
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-      const SizedBox(height: 20),
+      const SizedBox(height: 10),
       widget.isBottom
           ? Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -66,10 +67,10 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
           : const Text(AppText.CART,
               style: TextStyle(
                   color: Constants.colorOnSecondary,
-                  fontSize: 22,
+                  fontSize: 16,
                   fontFamily: Constants.cairoBold)),
       const Padding(
-        padding: EdgeInsets.only(bottom: 10),
+        padding: EdgeInsets.only(bottom: 10,top: 10),
         child: Divider(
           thickness: 1,
           color: Constants.colorTextLight2,
@@ -88,7 +89,11 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
                 endActionPane: ActionPane(
                     extentRatio: 0.3,
                     motion: const ScrollMotion(),
+
                     children: [
+
+
+
                       SlidableAction(
                           onPressed: (_) {
                             dialogHelper
@@ -96,7 +101,7 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
                               ..showDeleteDialogCart();
                           },
                           backgroundColor: Colors.transparent,
-                          icon: Icons.delete,
+                          icon: CustomIcon.frame,
                           label: '',
                           padding: const EdgeInsets.only(top: 10),
                           foregroundColor: Colors.red,
@@ -317,24 +322,29 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
                   color: Constants.colorPrimary,
                   borderRadius: BorderRadius.circular(4)),
               child: Row(
-                children: const [
-                  Text('34.00 \$',
+                children:  [
+                  const Text('34.00 \$',
                       style: TextStyle(
                           color: Constants.colorOnPrimary,
                           fontSize: 14,
                           fontFamily: Constants.cairoRegular)),
-                  SizedBox(width: 10),
-                  Text(AppText.ALL,
+                  const SizedBox(width: 10),
+                  const Text(AppText.ALL,
                       style: TextStyle(
                           color: Constants.colorOnPrimary,
                           fontFamily: Constants.cairoBold,
                           fontSize: 14)),
-                  Spacer(),
-                  Text(AppText.COUNTINUE_THE_ORDER,
-                      style: TextStyle(
-                          color: Constants.colorOnPrimary,
-                          fontSize: 14,
-                          fontFamily: Constants.cairoRegular))
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: ()=>  Navigator.pushNamed(
+                        context, OrderDetailScreen.route,
+                        arguments: [true, false, false]),
+                    child: const Text(AppText.COUNTINUE_THE_ORDER,
+                        style: TextStyle(
+                            color: Constants.colorOnPrimary,
+                            fontSize: 14,
+                            fontFamily: Constants.cairoRegular)),
+                  )
                 ],
               ),
             )

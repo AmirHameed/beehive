@@ -9,7 +9,8 @@ import 'package:beehive/ui/category-detail/category_detail_screen.dart';
 import 'package:beehive/ui/category-detail/category_detail_screen_bloc.dart';
 import 'package:beehive/ui/choose_delivery_address_screen.dart';
 import 'package:beehive/ui/main/navitem/cart_nav_item_screen.dart';
-import 'package:beehive/ui/my_address_screen.dart';
+import 'package:beehive/ui/my-address/my_address_screen.dart';
+import 'package:beehive/ui/my-address/my_address_screen_bloc.dart';
 import 'package:beehive/ui/my_information_screen.dart';
 import 'package:beehive/ui/order-detail/order_detail_screen_bloc.dart';
 import 'package:beehive/ui/order/order_screen.dart';
@@ -17,7 +18,8 @@ import 'package:beehive/ui/order/order_screen_bloc.dart';
 import 'package:beehive/ui/order-detail/order_detail_screen.dart';
 import 'package:beehive/ui/order_tracking_screen.dart';
 import 'package:beehive/ui/order_tracking_screen_bloc.dart';
-import 'package:beehive/ui/payment_method_screen.dart';
+import 'package:beehive/ui/payment-method/payment_method_screen.dart';
+import 'package:beehive/ui/payment-method/payment_method_screen_bloc.dart';
 import 'package:beehive/ui/product_screen.dart';
 import 'package:beehive/ui/profile_screen.dart';
 import 'package:beehive/ui/provider_offers_screen.dart';
@@ -115,12 +117,15 @@ class _AppRouter {
             create: (_) => SettingScreenBloc(), child: const SettingScreen()));
       case MyAddressScreen.route:
         final argument = settings.arguments as bool;
-        return _getPageRoute(MyAddressScreen(isShippingAddress: argument));
+        return _getPageRoute(BlocProvider(
+            create: (_) => MyAddressScreenBloc(isShippingAddress: argument), child: const MyAddressScreen()));
       case ChooseDeliveryAddressScreen.route:
         final argument = settings.arguments as bool?;
         return _getPageRoute(ChooseDeliveryAddressScreen(isEdit: argument??false));
       case PaymentMethodScreen.route:
-        return _getPageRoute(const PaymentMethodScreen());
+        final argument = settings.arguments as bool;
+        return _getPageRoute(BlocProvider(
+            create: (_) => PaymentMethodScreenBloc(isShippingAddress: argument), child: const PaymentMethodScreen()));
       case OrderScreen.route:
         return _getPageRoute(BlocProvider(
             create: (_) => OrderScreenBloc(), child: const OrderScreen()));

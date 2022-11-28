@@ -1,4 +1,5 @@
 import 'package:beehive/extension/context_extension.dart';
+import 'package:beehive/helper/dialog_helper.dart';
 import 'package:beehive/ui/choose_delivery_address_screen.dart';
 import 'package:beehive/ui/common/app_button.dart';
 import 'package:beehive/ui/order_tracking_screen.dart';
@@ -16,6 +17,8 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = context.screenSize;
+    final dialogHelper = DialogHelper.instance();
+
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
@@ -58,9 +61,47 @@ class ChatScreen extends StatelessWidget {
                                   fontFamily: Constants.cairoRegular)),
                           const SizedBox(width: 3),
                           Image.asset('assets/full.png', width: 15, height: 15),
-
                           const Spacer(),
-                          const Icon(Icons.more_horiz)
+
+
+                        PopupMenuButton<int>(
+                          color: Constants.colorOnSurface,
+                          tooltip: '',
+                          offset: const Offset(0,30),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          elevation: 10,
+                          icon: const Icon(
+                            Icons.more_horiz,
+                          ),
+                          itemBuilder: (context) => [
+                            const PopupMenuItem<int>(
+                                value: 0,
+                                child: Text(
+                                  'Cancel order',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: Constants.cairoMedium,
+                                      color: Constants.colorOnSecondary),
+                                )),
+                            const PopupMenuItem<int>(
+                                value: 0,
+                                child: Text(
+                                  'Report',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: Constants.cairoMedium,
+                                      color: Constants.colorOnSecondary),
+                                )),
+                          ],
+                          onSelected: (index) {
+                            if(index==0){
+                              dialogHelper
+                                ..injectContext(context)
+                                ..showDeleteDialog();
+                            }
+                          },
+                        )
                         ],
                       ),
                     ),
@@ -136,7 +177,7 @@ class ChatScreen extends StatelessWidget {
 
                       Container(
                         margin: const EdgeInsets.only(left: 5),
-                        padding: const EdgeInsets.only(left: 5),
+                        padding: const EdgeInsets.only(left: 8),
                         decoration: BoxDecoration(
                           color: Constants.colorChat,
                           borderRadius: BorderRadius.circular(12)
@@ -163,20 +204,20 @@ class ChatScreen extends StatelessWidget {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(right: 5),
-                        padding: const EdgeInsets.only(right: 5,left: 5),
+                        padding: const EdgeInsets.only(right: 8,left: 8),
                         decoration: BoxDecoration(
                             color: Constants.colorTextLight3,
                             borderRadius: BorderRadius.circular(12)
 
                         ),
                         height: 80,
-                        width: 120,
+                        width: 150,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisSize: MainAxisSize.min,
                           children: const [
-                            Text('Welcome, Im going to the site right now',style: TextStyle(fontSize: 14, fontFamily: Constants.cairoRegular,color: Constants.colorOnSecondary)),
+                            Text('Welcome, Im going to the site right now',style: TextStyle(fontSize: 14,height: 1.5, fontFamily: Constants.cairoRegular,color: Constants.colorOnSecondary)),
                             SizedBox(height: 5),
                             Text('11:03 am',style: TextStyle(fontSize: 10, fontFamily: Constants.cairoRegular,color: Constants.colorChatText))
                           ],
@@ -194,6 +235,13 @@ class ChatScreen extends StatelessWidget {
                   color: Constants.colorOnPrimary,
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                   child: Row(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Image(image: AssetImage('assets/camera.png'),width: 25,height: 25),
+                        visualDensity: VisualDensity.compact,
+                        splashRadius: 1,
+                        padding: const EdgeInsets.all(0)),
+
                     Expanded(
                         child: TextField(
                             controller:TextEditingController(),
@@ -205,20 +253,14 @@ class ChatScreen extends StatelessWidget {
                                 hintText: 'your message',
                                 hintStyle: const TextStyle(color: Constants.colorTextLight, fontSize: 14, fontFamily: Constants.cairoRegular),
                                 border: InputBorder.none,
-                                prefixIconConstraints: const BoxConstraints(maxHeight: 50,maxWidth: 50),
-                                prefixIcon:const Padding(
+                                suffixIconConstraints: const BoxConstraints(maxHeight: 50,maxWidth: 50),
+                                suffixIcon:const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 10),
                                   child: Image(image: AssetImage('assets/send_icon.png'),width: 30,height: 30,fit: BoxFit.cover,),
                                 ) ,
                                 focusedBorder: OutlineInputBorder(borderSide: const BorderSide(color: Constants.colorTextLight,width: 1),borderRadius: BorderRadius.circular(12)),
                                 enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: Constants.colorTextLight,width: 1),borderRadius: BorderRadius.circular(12)),
                                 disabledBorder: InputBorder.none))),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Image(image: AssetImage('assets/camera.png'),width: 25,height: 25),
-                        visualDensity: VisualDensity.compact,
-                        splashRadius: 1,
-                        padding: const EdgeInsets.all(0)),
                   ])),
             )
 

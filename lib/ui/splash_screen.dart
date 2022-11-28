@@ -1,19 +1,21 @@
 import 'package:beehive/extension/context_extension.dart';
 import 'package:beehive/ui/auth/login_screen.dart';
+import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   static const String route = '/';
 
   const SplashScreen();
 
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    Future.delayed(const Duration(seconds: 7))
-        .then((value) => Navigator.pushNamedAndRemoveUntil(context, LoginScreen.route,(_)=>false));
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  Widget build(BuildContext context) {
     final size = context.screenSize;
 
     return Scaffold(
@@ -26,5 +28,24 @@ class SplashScreen extends StatelessWidget {
               height: size.height,
               fit: BoxFit.fill,
             )));
+  }
+
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    Future.delayed(const Duration(seconds: 7)).then((value) =>
+        Navigator.pushNamedAndRemoveUntil(
+            context, LoginScreen.route, (_) => false));
+  }
+
+  @override
+  void dispose() {
+    final mySystemTheme = SystemUiOverlayStyle.light.copyWith(
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        statusBarColor: Constants.colorPrimary);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    SystemChrome.setSystemUIOverlayStyle(mySystemTheme);
   }
 }

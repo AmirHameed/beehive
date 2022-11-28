@@ -135,6 +135,11 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                                   textColor:state? Constants.colorOnSurface:Constants.colorOnPrimary.withOpacity(0.7),
                                   borderRadius: 8.0,
                                   fontSize: 14,
+                                  fontStyle: TextStyle(
+                                    fontFamily: Constants.cairoMedium,
+                                    fontSize: 14,
+                                    color:state? Constants.colorOnSurface:Constants.colorOnPrimary.withOpacity(0.7),
+                                  ),
                                   color: state
                                       ? Constants.colorPrimary
                                       : Constants.colorPrimaryLight),
@@ -153,18 +158,18 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(Icons.arrow_back_ios,
+                            size: 22, color: Constants.colorOnSecondary)),
                     const Text(AppText.ORDER_TRACKING,
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: Constants.cairoBold,
                             color: Constants.colorOnSecondary)),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Icon(Icons.clear,
-                            size: 22, color: Constants.colorOnSecondary))
+                    const SizedBox()
                   ],
                 ),
               ),
@@ -234,7 +239,7 @@ class Stepper extends StatelessWidget {
             child: Text(
           text,
           style: TextStyle(
-              fontFamily: Constants.cairoBold,
+              fontFamily: Constants.cairoSemibold,
               fontSize: 14,
               color: isStepperActive
                   ? Constants.colorOnSecondary

@@ -114,26 +114,53 @@ class OrderScreen extends StatelessWidget {
               builder: (_, index) => Expanded(
                   child: index == 0
                       ? Column(
-                          children: const [
-                            _SingleOrderItemWidget(title: AppText.NEW),
-                            _SingleOrderItemWidget(title: AppText.NEW),
+                          children:  [
+                            GestureDetector(
+                                onTap: ()=>Navigator.pushNamed(
+                                    context, OrderDetailScreen.route,
+                                    arguments: [false, false, true]),
+                                child: const _SingleOrderItemWidget(title: AppText.NEW)),
+                            GestureDetector(
+                                onTap: ()=>Navigator.pushNamed(
+                                    context, OrderDetailScreen.route,
+                                    arguments: [false, false, true]),child: const _SingleOrderItemWidget(title: AppText.NEW)),
                           ],
                         )
                       : index == 1
                           ? Column(
-                              children: const [
-                                _SingleOrderItemWidget(
-                                    title: AppText.COMPLETED),
-                                _SingleOrderItemWidget(
-                                    title: AppText.COMPLETED),
+                              children:  [
+                                GestureDetector(
+                                  onTap: ()=>Navigator.pushNamed(
+                                      context, OrderDetailScreen.route,
+                                      arguments: [false, false, true]),
+                                  child: const _SingleOrderItemWidget(
+                                      title: AppText.COMPLETED),
+                                ),
+                                GestureDetector(
+                                  onTap: ()=>Navigator.pushNamed(
+                                      context, OrderDetailScreen.route,
+                                      arguments: [false, false, true]),
+                                  child: const _SingleOrderItemWidget(
+                                      title: AppText.COMPLETED),
+                                ),
                               ],
                             )
                           : Column(
-                              children: const [
-                                _SingleOrderItemWidget(
-                                    title: AppText.CANCELLED),
-                                _SingleOrderItemWidget(
-                                    title: AppText.CANCELLED),
+                              children:  [
+                                GestureDetector(
+                                  onTap: ()=>Navigator.pushNamed(
+                                      context, OrderDetailScreen.route,
+                                      arguments: [false, false, true]),
+                                  child: const _SingleOrderItemWidget(
+                                      title: AppText.CANCELLED),
+                                ),
+                                GestureDetector(
+                                  onTap: ()=>Navigator.pushNamed(
+                                      context, OrderDetailScreen.route,
+                                      arguments: [false, false, true]),
+                                  child: const _SingleOrderItemWidget(
+                                      title: AppText.CANCELLED),
+                                ),
                               ],
                             )),
             )

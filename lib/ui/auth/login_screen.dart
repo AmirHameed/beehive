@@ -17,14 +17,6 @@ class LoginScreen extends StatelessWidget {
     final size = context.screenSize;
     final mobileController = TextEditingController();
 
-    final mySystemTheme = SystemUiOverlayStyle.light.copyWith(
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.dark,
-        statusBarColor: Constants.colorPrimary);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-
-    SystemChrome.setSystemUIOverlayStyle(mySystemTheme);
-
     return Scaffold(
         body: SingleChildScrollView(
           child: Column(

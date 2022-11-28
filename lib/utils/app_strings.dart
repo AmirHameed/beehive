@@ -18,7 +18,7 @@ abstract class AppText {
   static const String SAVE = 'Save';
   static const String SEARCH = 'Search';
   static const String FAVOURITE = 'Favourite';
-  static const String NOTIFICATION = 'Notification';
+  static const String NOTIFICATIONS = 'Notifications';
   static const String CART = 'Cart';
   static const String ALL = 'ALL';
   static const String COUNTINUE_THE_ORDER = 'Countinue the order';
@@ -36,7 +36,6 @@ abstract class AppText {
   static const String LANGUAGE = 'Language';
   static const String ENGLISH = 'English';
   static const String ARABIC = 'Arabic';
-  static const String NOTIFICATIONS = 'Notifications';
   static const String CHANGE_LANGUAGE = 'Change language';
   static const String MY_ADDRESS = 'My addresses';
   static const String ADD_NEW = 'Add new';
@@ -47,7 +46,7 @@ abstract class AppText {
   static const String PAYMENT_METHODS = 'Payment methods';
   static const String PAYMENT_METHOD = 'Payment method';
   static const String MY_ORDERS = 'My orders';
-  static const String CASH_ON_DELIVERY = 'Cash on Delivery(Cash)';
+  static const String WALLET = 'WALLET';
   static const String ADD_PAYMENT_METHOD = 'Add payment method';
   static const String NAME = 'Name';
   static const String CARD_NUMBER = 'Card number';
@@ -57,6 +56,7 @@ abstract class AppText {
   static const String CANCELLED = 'Cancelled';
   static const String NEW = 'New';
   static const String CHAT = 'Chat';
+  static const String CHOOSE = 'Choose';
   static const String ORDER_DETAILS = 'Order details';
   static const String REVIEW = 'Review';
   static const String RE_ORDER = 'Re-order';
@@ -70,6 +70,7 @@ abstract class AppText {
   static const String CONTINUE = 'Continue';
   static const String DELIVERY_ADDRESS = 'Delivery address';
   static const String CANCEL_ORDER = 'Cancel Order';
+  static const String CANCEL_THE_ORDER = 'Cancel the order';
   static const String ARE_YOU_SURE = 'Are you sure?';
   static const String YES = 'Yes';
   static const String YES_DELETE = 'Yes,delete';
@@ -85,8 +86,7 @@ abstract class AppText {
   static const String THE_DRIVER_HAS_PICKED_YOUR_ORDER_AND_ON_HIS_WAY_TO_YOU = 'The driver has picked your order and on his way to you';
   static const String THE_DRIVER_HAS_ARRIVED_AT_THE_DELIVERY_POINT = 'The provider has arrived at the delivery point';
   static const String CHOOSE_THE_OFFER = 'Choose the offer';
-  static const String CANCEL_THE_ORDER = 'Cancel the order';
-  static const String PROVIDERS_OFFERS = 'Providers offers';
+  static const String PROVIDERS_OFFERS = 'Provider offers';
   static const String YOU_CAN_REORDER_OR_CANCEL_ORDER = 'You can re-order or cancel this order';
   static const String THERE_IS_NO_RESPONSE = 'There is no response';
   static const String YOUR_REQUEST_SENT_TO_PROVIDER = 'Your request has been sent to providers';
