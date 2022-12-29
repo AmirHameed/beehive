@@ -127,6 +127,8 @@ showChangeInformationBottomSheet(
   return showModalBottomSheet(
     context: context,
     enableDrag: true,
+    isScrollControlled: true,
+    constraints: BoxConstraints(minHeight: size.height/3.2,maxHeight: size.height/3.2),
     isDismissible: true,
     backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(

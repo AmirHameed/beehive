@@ -8,4 +8,6 @@ class SignUpProfileScreenBloc extends Cubit<DataEvent>{
   void handleImageSelection(XFile file) => emit(Data(data: file));
 
 
+
+
 }

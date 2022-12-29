@@ -43,6 +43,7 @@ class AppTextField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            prefixIcon != null ? prefixIcon! : const SizedBox(),
             Expanded(
                 child: TextFormField(
                     obscureText: isObscure,

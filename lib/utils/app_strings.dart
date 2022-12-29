@@ -1,17 +1,28 @@
 abstract class AppText {
   static const String APP_NAME = 'Beehive';
-  static const String LOGIN = 'Log in';
+  static const String LOGIN = 'Login';
   static const String NEW_USER = 'New user? ';
+  static const String DONOT_HAVE_AN_ACCOUNT = "Don't have an Account? ";
   static const String SIGNUP = 'Sign up';
   static const String MOBILE_NUMBER = 'Mobile Number';
-  static const String OR_LOGIN_VIA = 'Or log in via';
-  static const String OR_SIGNUP_VIA = 'Or sign up via';
-  static const String ALREADY_REGISTERED = 'Already registered? ';
+  static const String OR_LOGIN_VIA = 'Or Login with';
+  static const String OR_SIGNUP_VIA = 'Or Sign up with';
+  static const String ALREADY_REGISTERED = 'Already have an Account? ';
   static const String OTP = 'OTP';
-  static const String PLEASE_ENTER_THE_OTP_CODE = 'Please enter the OTP code';
+  static const String PLEASE_ENTER_THE_FORGOT_PASSWORD_CODE = 'Please enter the phone number below, we will send you OTP to reset your password ';
+  static const String SEND = 'Send';
+  static const String RESET = 'Reset';
+  static const String NEW_PASSWORD = 'New Password';
+  static const String PASSWORD = 'Password';
+  static const String CONFIRM_NEW_PASSWORD = 'Confirm New Password';
+  static const String CONFIRM_PASSWORD = 'Confirm Password';
+  static const String CREATE_NEW_PASSWORD = 'Create New Password';
+  static const String YOUR_NEW_PASSWORD_MUST_BE_DIFFIRENT = 'Your new password must be different from your old password';
+  static const String CREATE_ACCOUNT = 'Create account';
+  static const String PLEASE_ENTER_THE_OTP_CODE = 'We sent you a code on your phone, please enter that code below to verify your phone number';
   static const String ENTER_CODE = 'Enter code';
   static const String CONFIRM = 'Confirm';
-  static const String NOT_RECEIVED = 'Not received? ';
+  static const String NOT_RECEIVED = 'Did not received OTP  ? ';
   static const String RESEND = 'Resend';
   static const String FULL_NAME = 'Full Name';
   static const String CURRENT_LOCATION = 'Current Location';
@@ -28,10 +39,11 @@ abstract class AppText {
   static const String CHANGE_FULL_NAME = 'Change full name';
   static const String CHANGE_EMAIL = 'Change email';
   static const String CHANGE_PASSWORD = 'Change password';
+  static const String REPORT = 'Report';
+  static const String SELECT_REASON = 'Select Reason';
+  static const String EXPLAIN_YOUR_PROBLEM_HERE = 'Explain your problem here';
   static const String EMAIL = 'Email';
   static const String CURRENT_PASSWORD = 'Current password';
-  static const String NEW_PASSWORD = 'New password';
-  static const String CONFIRM_NEW_PASSWORD = 'Confirm new password';
   static const String SETTINGS = 'Settings';
   static const String LANGUAGE = 'Language';
   static const String ENGLISH = 'English';
@@ -94,8 +106,10 @@ abstract class AppText {
   static const String TERM_AND_CONDITION = 'Terms & Conditions';
   static const String PRIVACY_POLICY = 'Privacy Policy';
   static const String SUPPORT = 'Support';
-
-
+  static const String FORGOT_PASSWORD = 'Forgot password?';
+  static const String FORGOT_PASSWORD_ = 'Forgot password';
+  static const String CONTACT_VIA_EMAIL = 'Contact Via Email';
+  static const String CONTACT_VIA_WHATSAPP = 'Contact Via Whatsapp';
 
 
 

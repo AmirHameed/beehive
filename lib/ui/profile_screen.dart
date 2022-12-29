@@ -9,6 +9,7 @@ import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'common/app_bar.dart';
+import 'common/app_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String route = 'profile_screen_route';
@@ -17,8 +18,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = context.screenSize;
-
     return Scaffold(
       body: SafeArea(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -81,18 +80,15 @@ class ProfileScreen extends StatelessWidget {
           _SingleProfileItemNavigation(
               title: AppText.TERM_AND_CONDITION,
               image: 'assets/term_and_condition.png',
-              onTap: () =>
-                  Navigator.pushNamed(context, MyInformationScreen.route)),
+              onTap: () {}),
           _SingleProfileItemNavigation(
               title: AppText.PRIVACY_POLICY,
               image: 'assets/privacy.png',
-              onTap: () =>
-                  Navigator.pushNamed(context, MyInformationScreen.route)),
+              onTap: () {}),
           _SingleProfileItemNavigation(
               title: AppText.SUPPORT,
               image: 'assets/call_profile_icon.png',
-              onTap: () =>
-                  Navigator.pushNamed(context, MyInformationScreen.route)),
+              onTap: () =>showContactInformationBottomSheet(context)),
 
 
         ]),
@@ -128,4 +124,95 @@ class _SingleProfileItemNavigation extends StatelessWidget {
       ),
     );
   }
+}
+showContactInformationBottomSheet(BuildContext context) {
+  final size = context.screenSize;
+  return showModalBottomSheet(
+    context: context,
+    enableDrag: true,
+    isDismissible: true,
+    isScrollControlled: true,
+    constraints: BoxConstraints(minHeight: size.height/1.4,maxHeight: size.height/1.4),
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
+    ),
+    builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Constants.colorTextLight2,
+              ),
+              width: 40,
+              height: 6,
+            ),
+            const Text(AppText.SUPPORT,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: Constants.cairoSemibold,
+                    color: Constants.colorOnSecondary)),
+            const SizedBox(height: 20),
+            const Image(image: AssetImage('assets/contact_image.png'),width: 188,height: 188,),
+
+            const SizedBox(height: 20),
+
+            const Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: Constants.cairoRegular,
+                    color: Constants.colorOnSecondary)),
+            const SizedBox(
+                height: 20),
+
+            SizedBox(
+              height: 48,
+              width: size.width,
+              child: RawMaterialButton(
+                  constraints: const BoxConstraints(minHeight: 44, maxHeight: 44),
+                  fillColor:Constants.colorPrimary,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0)),
+                  onPressed: () {},
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/contact_message.png',width: 22,height: 22),
+                        const SizedBox(width:  5),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 22),
+                          child: Text(AppText.CONTACT_VIA_EMAIL,
+                              style: TextStyle(
+                                  color: Constants.colorOnPrimary,
+                                  fontFamily: Constants.cairoMedium,
+                                  fontSize: 14)),
+                        )
+                      ])),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+                height: 48,
+                width: size.width,
+                child: IconAppButton(
+                    onClick: () {},
+                    prefixIcon: Image.asset('assets/contact_watsapp.png',width: 30,height: 22),
+                    text: AppText.CONTACT_VIA_WHATSAPP,
+                    textColor: Constants.colorOnPrimary,
+                    borderRadius: 8.0,
+                    fontSize: 14,
+                    color:  Constants.colorPrimary))
+          ],
+        ),
+      );
+    },
+  );
 }

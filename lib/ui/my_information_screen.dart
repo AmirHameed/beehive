@@ -128,6 +128,8 @@ showChangeInformationBottomSheet(
     context: context,
     enableDrag: true,
     isDismissible: true,
+    isScrollControlled: true,
+    constraints: BoxConstraints(minHeight: size.height/3.2,maxHeight: size.height/3.2),
     backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(

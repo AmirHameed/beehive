@@ -1,10 +1,15 @@
 import 'dart:io';
 import 'package:beehive/translation/codegen_loader.g.dart';
+import 'package:beehive/ui/auth/forgot_password_screen.dart';
 import 'package:beehive/ui/auth/login_screen.dart';
+import 'package:beehive/ui/auth/login_screen_bloc.dart';
+import 'package:beehive/ui/auth/new_password_screen.dart';
+import 'package:beehive/ui/auth/new_password_screen_bloc.dart';
 import 'package:beehive/ui/auth/otp_screen.dart';
 import 'package:beehive/ui/auth/signup_profile_screen.dart';
 import 'package:beehive/ui/auth/signup_profile_screen_bloc.dart';
 import 'package:beehive/ui/auth/signup_screen.dart';
+import 'package:beehive/ui/auth/signup_screen_bloc.dart';
 import 'package:beehive/ui/category-detail/category_detail_screen.dart';
 import 'package:beehive/ui/category-detail/category_detail_screen_bloc.dart';
 import 'package:beehive/ui/choose_delivery_address_screen.dart';
@@ -96,11 +101,14 @@ class _AppRouter {
       case SplashScreen.route:
         return _getPageRoute(const SplashScreen());
       case LoginScreen.route:
-        return _getPageRoute(const LoginScreen());
+        return _getPageRoute(BlocProvider(
+            create: (_) => LoginScreenBloc(), child: const LoginScreen()));
       case SignUpScreen.route:
-        return _getPageRoute(const SignUpScreen());
+        return _getPageRoute(BlocProvider(
+            create: (_) => SignupScreenBloc(), child: const SignUpScreen()));
       case OTPScreen.route:
-        return _getPageRoute(const OTPScreen());
+        final argument=settings.arguments as bool;
+        return _getPageRoute(OTPScreen(isSignUp: argument));
       case SignUpProfileScreen.route:
         return _getPageRoute(BlocProvider(
             create: (_) => SignUpProfileScreenBloc(),
@@ -158,6 +166,12 @@ class _AppRouter {
       case ReviewsScreen.route:
         final argument = settings.arguments as bool?;
         return _getPageRoute(ReviewsScreen(isRestaurant: argument??false));
+      case ForgotPasswordScreen.route:
+        return _getPageRoute(const ForgotPasswordScreen());
+      case NewPasswordScreen.route:
+        return _getPageRoute(BlocProvider(
+            create: (_) => NewPasswordScreenBloc(),
+            child: const NewPasswordScreen()));
     }
     return null;
   }

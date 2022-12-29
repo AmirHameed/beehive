@@ -74,8 +74,7 @@ class _OrderTrackingScreenState extends State<OrderTrackingScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Stepper(
-                            isStepperActive: true,
-                            text: AppText.THE_DRIVER_IS_HEADING_TO_THE_PICKUP_LOCATION),
+                            isStepperActive: true, text: AppText.THE_DRIVER_IS_HEADING_TO_THE_PICKUP_LOCATION),
                         GestureDetector(
                             onTap: () => bloc.updateTracking(),
                             child: Stepper(
@@ -236,15 +235,19 @@ class Stepper extends StatelessWidget {
         ),
         const SizedBox(width: 5),
         Expanded(
-            child: Text(
+            child: Column(
+              children: [
+                Text(
           text,
           style: TextStyle(
-              fontFamily: Constants.cairoSemibold,
-              fontSize: 14,
-              color: isStepperActive
-                  ? Constants.colorOnSecondary
-                  : Constants.colorDotLine),
-        ))
+                  fontFamily: Constants.cairoSemibold,
+                  fontSize: 14,
+                  color: isStepperActive
+                      ? Constants.colorOnSecondary
+                      : Constants.colorDotLine),
+        ),
+              ],
+            ))
       ],
     );
   }

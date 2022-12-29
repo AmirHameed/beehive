@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:beehive/extension/context_extension.dart';
+import 'package:beehive/ui/auth/new_password_screen.dart';
 import 'package:beehive/ui/auth/signup_profile_screen.dart';
 import 'package:beehive/ui/common/app_button.dart';
 import 'package:beehive/utils/app_strings.dart';
@@ -9,8 +9,9 @@ import 'package:flutter/material.dart';
 
 class OTPScreen extends StatefulWidget {
   static const String route = 'otp_screen_route';
+  final bool isSignUp;
 
-  const OTPScreen({Key? key}) : super(key: key);
+  const OTPScreen({required this.isSignUp});
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -77,11 +78,15 @@ class _OTPScreenState extends State<OTPScreen> {
                   color: Constants.colorOnSecondary,
                   fontSize: 27,
                   fontFamily: Constants.cairoBold)),
-          const Text(AppText.PLEASE_ENTER_THE_OTP_CODE,
-              style: TextStyle(
-                  color: Constants.colorTextLight,
-                  fontSize: 16,
-                  fontFamily: Constants.cairoRegular)),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Text(AppText.PLEASE_ENTER_THE_OTP_CODE,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Constants.colorTextLight,
+                    fontSize: 14,
+                    fontFamily: Constants.cairoRegular)),
+          ),
           Container(
               height: 60,
               alignment: Alignment.center,
@@ -113,7 +118,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 child: AppButton(
                     onClick: () {
                       FocusScope.of(context).unfocus();
-                      Navigator.pushNamed(context, SignUpProfileScreen.route);
+                      Navigator.pushNamed(context,widget.isSignUp?SignUpProfileScreen.route: NewPasswordScreen.route);
                     },
                     text: AppText.CONFIRM,
                     textColor: Constants.colorOnSurface,
@@ -133,13 +138,13 @@ class _OTPScreenState extends State<OTPScreen> {
               Text(AppText.NOT_RECEIVED,
                   style: TextStyle(
                       color: Constants.colorTextLight,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: Constants.cairoRegular)),
               SizedBox(width: 5),
               Text(AppText.RESEND,
                   style: TextStyle(
                       color: Constants.colorPrimary,
-                      fontSize: 16,
+                      fontSize: 14,
                       fontFamily: Constants.cairoBold)),
             ],
           ),

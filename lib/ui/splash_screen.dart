@@ -32,7 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light));
     Future.delayed(const Duration(seconds: 7)).then((value) =>
         Navigator.pushNamedAndRemoveUntil(
             context, LoginScreen.route, (_) => false));
