@@ -8,7 +8,6 @@ import 'package:beehive/ui/main/navitem/notification_nav_item_screen.dart';
 import 'package:beehive/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gif/flutter_gif.dart';
 
@@ -120,7 +119,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
           label: '',
           activeIcon: GifImage(
               controller: controller4,
-              image: const AssetImage("assets/notification_selected.gif"),
+              image: const AssetImage('assets/notification_selected.gif'),
               width: 25,
               height: 25)),
       BottomNavigationBarItem(

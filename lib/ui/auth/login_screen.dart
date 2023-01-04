@@ -27,11 +27,11 @@ class LoginScreen extends StatelessWidget {
         children: [
           Container(
             width: size.width,
-            height: size.height / 3,
+            height: size.height /3,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/login_header.png'),
-                    fit: BoxFit.fitWidth)),
+                    fit: BoxFit.fill)),
           ),
           const Text(AppText.LOGIN,
               style: TextStyle(
@@ -140,6 +140,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 10)
         ],
       ),
     ));
