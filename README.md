@@ -34,13 +34,11 @@ Beehive User Side is a Flutter-based mobile application that allows users to dis
 git clone https://github.com/your-username/beehive-user-side.git
 cd beehive-user-side
 Install Dependencies
-```bash
 flutter pub get
 Configure Firebase
 Set up a Firebase project on the Firebase Console.
 Configure Firebase for your Flutter app by following the instructions in the Firebase documentation.
 Run the App
-```bash
 flutter run
 Usage
 Launch the app and create an account or log in.
