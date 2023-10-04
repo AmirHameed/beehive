@@ -8,7 +8,7 @@ Beehive User Side is a Flutter-based mobile application that allows users to dis
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-08-552_com.appforce.beehive.jpg)(assets/Screenshot_2023-10-04-15-26-14-124_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-08-552_com.appforce.beehive.png)(assets/Screenshot_2023-10-04-15-26-14-124_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-26-39-879_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
