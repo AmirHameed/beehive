@@ -101,7 +101,7 @@ class _CartNavigationItemScreenState extends State<CartNavigationItemScreen> {
                               ..showDeleteDialogCart();
                           },
                           backgroundColor: Colors.transparent,
-                          icon: const Icon(CustomIcon.frame),
+                          icon: Icons.delete,
                           label: '',
                           padding: const EdgeInsets.only(top: 10),
                           foregroundColor: Colors.red,

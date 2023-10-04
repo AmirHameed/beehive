@@ -7,8 +7,15 @@ Beehive User Side is a Flutter-based mobile application that allows users to dis
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-08-552_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-14-124_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-39-879_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-25-975_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-30-458_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-46-592_com.appforce.beehive.jpg)
 
 ## Features
 
@@ -30,17 +37,16 @@ Beehive User Side is a Flutter-based mobile application that allows users to dis
 
 ### Clone the Repository
 
-```bash
 git clone https://github.com/your-username/beehive-user-side.git
 cd beehive-user-side
-Install Dependencies
+## Install Dependencies
 flutter pub get
 Configure Firebase
 Set up a Firebase project on the Firebase Console.
 Configure Firebase for your Flutter app by following the instructions in the Firebase documentation.
 Run the App
 flutter run
-Usage
+## Usage
 Launch the app and create an account or log in.
 Browse restaurants, view their menus, and read reviews.
 Add items to your cart and place orders.
@@ -54,7 +60,7 @@ Commit your changes and push to your fork: git push origin feature/your-feature-
 Open a pull request to the main repository with a clear description of your changes.
 Please make sure to adhere to the project's coding standards and follow best practices. For major changes or significant features, it's a good idea to discuss them in an issue before starting work.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Please replace the placeholders like `your-username`, `feature/your-feature-name`, and adjust the content to match your project's specific details and requirements. This README file provides an overview of your project's features, installation instructions, usage guidelines, and contribution guidelines, which can be expanded upon as needed.
