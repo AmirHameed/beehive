@@ -7,13 +7,8 @@ Beehive User Side is a Flutter-based mobile application that allows users to dis
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Screenshot](#screenshot)
 - [License](#license)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-39-879_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-25-975_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-30-458_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-46-592_com.appforce.beehive.jpg)
 
 ## Features
 
@@ -57,6 +52,14 @@ Create a new branch for your feature or bug fix: git checkout -b feature/your-fe
 Commit your changes and push to your fork: git push origin feature/your-feature-name.
 Open a pull request to the main repository with a clear description of your changes.
 Please make sure to adhere to the project's coding standards and follow best practices. For major changes or significant features, it's a good idea to discuss them in an issue before starting work.
+
+## screenshot
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-39-879_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-25-975_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-30-458_com.appforce.beehive.jpg)
+- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-46-592_com.appforce.beehive.jpg)
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
