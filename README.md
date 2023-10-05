@@ -55,7 +55,6 @@ Please make sure to adhere to the project's coding standards and follow best pra
 
 ## screenshot
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-39-879_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-27-25-975_com.appforce.beehive.jpg)
 - ![App Screenshot](assets/Screenshot_2023-10-04-15-27-30-458_com.appforce.beehive.jpg)
