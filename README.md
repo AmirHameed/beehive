@@ -54,11 +54,14 @@ Open a pull request to the main repository with a clear description of your chan
 Please make sure to adhere to the project's coding standards and follow best practices. For major changes or significant features, it's a good idea to discuss them in an issue before starting work.
 
 ## screenshot
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-26-22-626_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-15-610_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-25-975_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-30-458_com.appforce.beehive.jpg)
-- ![App Screenshot](assets/Screenshot_2023-10-04-15-27-46-592_com.appforce.beehive.jpg)
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/1%20Splash.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/3%20Service%20Availability.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/6.%20Home.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/7.%20Detail.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/10%20Explore.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/11%20People%20and%20Heatmap.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/13%20Business%20Detail.jpg" width="100" height="250">
+- <img src="https://github.com/AmirHameed/mx/blob/main/assets/15%20Categories.jpg" width="100" height="250">
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
